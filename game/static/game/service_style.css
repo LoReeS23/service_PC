@@ -1,0 +1,119 @@
+#toggle-nav-sidebar{
+    text-align: center;
+}
+
+a {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 1px solid black;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: black;
+    text-align: center;
+    box-shadow: 2px 2px gray;
+    background-color: white;
+}
+input[type='submit'] {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 1px solid black;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: black;
+    cursor: pointer;
+    box-shadow: 2px 2px gray;
+    background-color: darkgray;
+    justify-content: space-around;
+    transition-duration: 0.4s;
+}
+input[type='button']{
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 1px solid black;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: black;
+    cursor: pointer;
+    box-shadow: 2px 2px gray;
+    background-color: darkgray;
+    transition-duration: 0.4s;
+}
+input[type='button']:hover{
+    background-color: #dddddd;
+}
+input[type='submit']:hover{
+    background-color: #dddddd;
+}
+#submits {
+    display: flex;
+    justify-content: space-evenly;
+}
+#navbar {
+    width: 20%;
+}
+section {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
+    color: #ddffdd;
+    background-color: rgba(0, 0, 0, 0.5)
+}
+article {
+    margin: 20px;
+    overflow: hidden;
+    text-align: center;
+}
+h5 {
+    font-size: 50px;
+}
+h1 {
+    text-align: center;
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+}
+#logo {
+    height: 10%;
+    width: 100px;
+    text-align: left;
+}
+b {
+    color: white;
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+}
+body {
+    height: 100%;
+    width: 100%;
+    background-image: url("wallpapers/game_page.jpg");
+    background-size: cover;
+    backdrop-filter: blur(5px);
+}
+.messages {
+    animation: hideAnimation 0s ease-in 3s;
+    animation-fill-mode: both;
+    transition-duration: 0.4s;
+    background-color: #81d4fa;
+    border: 4px black solid;
+    color: black;
+    width: 40%;
+    float: right;
+}
+@keyframes hideAnimation {
+  to {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+}

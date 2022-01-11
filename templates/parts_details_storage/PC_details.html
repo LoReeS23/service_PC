@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'navbar_detail.html' %}
+</head>
+<body>
+<input type="button" value="Magazyn" name="back" onclick="location.href='/game/storage/'">
+<input type="button" value="Poprzednia strona" name="back" onclick="history.back()">
+<article>
+    <h5>Płyta główna: {{ object.motherboard.name }} <input type="button" value="Szczegóły" onclick="location.href='/game/motherboard_details/{{ object.motherboard.id }}'"></h5>
+    <h5>Procesor: {{ object.processor.name }} <input type="button" value="Szczegóły" onclick="location.href='/game/processor_details/{{ object.processor.id }}'"></h5>
+    <h5>Karta graficzna: {{ object.graphic_card.name }} <input type="button" value="Szczegóły" onclick="location.href='/game/graphic_card_details/{{ object.graphic_card.id }}'"></h5>
+    <h5>Pamięci RAM:
+        {% for memory in pc.memory.all %}
+            <li>{{ memory.name }} <input type="button" value="Szczegóły" onclick="location.href='/game/memory_details/{{ memory.id }}'"></li>
+        {% endfor %}</h5>
+    <h5>Dyski:
+        {% for disc in pc.disc.all %}
+            <li>{{ disc.name }} <input type="button" value="Szczegóły" onclick="location.href='/game/disc_details/{{ disc.id }}'"></li>
+        {% endfor %}</h5>
+    <h5>Zasilacz: {{ object.power_supply.name }} <input type="button" value="Szczegóły" onclick="location.href='/game/power_supply_details/{{ object.power_supply.id }}'"></h5>
+    <h5>Obudowa: {{ object.case.name }} <input type="button" value="Szczegóły" onclick="location.href='/game/case_details/{{ object.case.id }}'"></h5>
+    <h5>Wartość komputera: {{ object.price }} $</h5>
+</article>
+<section>
+<input type="button" name="sell" value="Sell" onclick="location.href='/game/delete_pc/{{ object.pk }}';">
+</section>
+</body>
+</html>

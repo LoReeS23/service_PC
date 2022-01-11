@@ -1,0 +1,65 @@
+body {
+    height: 100%;
+    width: 100%;
+    background-image: url("wallpapers/detail.jpg");
+    background-size: cover;
+    backdrop-filter: blur(5px);
+}
+input[type='submit'] {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 1px solid black;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: black;
+    cursor: pointer;
+    box-shadow: 2px 2px gray;
+    background-color: darkgray;
+    justify-content: space-around;
+    transition-duration: 0.4s;
+}
+input[type='submit']:hover {
+    background-color: #3875d7;
+    font-size: larger;
+}
+a {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 1px solid black;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    text-align: left;
+    box-shadow: 2px 2px gray;
+    background-color: white;
+}
+form {
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    color: white;
+}
+h1 {
+    text-align: center;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+
+}
+label {
+    text-align: center;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+}
+#id_part {
+    background-color: #5897fb;
+    border: 12px;
+}
+img {
+    height: 10%;
+    width: 100px;
+    text-align: left;
+}

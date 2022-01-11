@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" type=text/css href="{% static "game/service_style.css" %}">
+<img src="{% static 'game/service_logo.jpg' %}" alt="service" id="logo">
+{% if not user.is_authenticated %}
+    <h1>Użytkownik: Niezalogowany</h1>
+    {% else %}
+    <h1>Użytkownik: {{ user.username }}</h1>
+{% endif %}
+<div id="toggle-nav-sidebar">
+    <a href="/main/">Strona główna</a>
+    <a href="/about/">O grze</a>
+    {% if user.is_authenticated %}
+        <a href="/game/">Graj!</a>
+        {% if user.is_superuser %}
+            <a href="/game/addpart">Dodaj nową część</a>
+        {% endif %}
+        <a href="/accounts/logout/">Wyloguj</a>
+    {% else %}
+        <a href="/accounts/login/">Zaloguj</a>
+        <a href="/accounts/register/">Zarejestruj</a>
+    {% endif %}
+</div>

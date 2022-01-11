@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'navbar_detail.html' %}
+</head>
+<body>
+ <input type="button" value="Magazyn" name="back" onclick="location.href='/game/storage/'">
+ <input type="button" value="Poprzednia strona" name="back" onclick="history.back()">
+ <article>
+    <h3>{{ object.name }}</h3>
+    <h5>Rozmiar płyty: {{ object.get_size_display }}</h5>
+    <h5>Socket: {{ object.get_socket_display }}</h5>
+    <h5>Maksymalnie kości pamięci RAM: {{ object.ram_slots }}</h5>
+    <h5>Typ pamięci RAM: {{ object.memory_type }}</h5>
+    <h5>Najniższa obsługiwana częstotliwość pamięci: {{ object.memory_frequency_lowest }}</h5>
+    <h5>Największa obsługiwana częstotliwość pamięci: {{ object.memory_frequency_highest }}</h5>
+    <h5>Ilość maksymalnych dysków na płycie typu m.2: {{ object.m2_disc_slots }}</h5>
+    <h5>Ilość maksymalnych dysków na płycie typu serial ata: {{ object.sata_disc_slots }}</h5>
+    <h5>Ilość złącz USB: {{ object.usb_amount }}</h5>
+    <h5>Ilość złączy PCI: {{ object.PCI_slots }}</h5>
+    <h5>Ilość złączy PCI Express: {{ object.PCI_express_slots }}</h5>
+    <h5>Czy posiada wbudowane oświetlenie RGB: {{ object.has_RGB }}</h5>
+    <h5>Cena: {{ object.price }} $</h5>
+ </article>
+ <section>
+ {% if tasks.count == 0 %}
+     {% if user.is_superuser %}
+         <input type="button" name="change" value="Change data of this part" onclick="location.href='/game/storage/updatepart/motherboard/{{ object.pk }}';">
+     {% endif %}
+     <input type="button" value="Sell" name="sell" onclick="location.href='/game/storage/sellpart/motherboard/{{ object.pk }}';">
+     {% else %}
+         {% for task in tasks %}
+            {% if task.pc.motherboard.name != object.name %}
+                {% if user.is_superuser %}
+                    <input type="button" name="change" value="Change data of this part" onclick="location.href='/game/storage/updatepart/motherboard/{{ object.pk }}';">
+                {% endif %}
+                <input type="button" value="Sell" name="sell" onclick="location.href='/game/storage/sellpart/motherboard/{{ object.pk }}';">
+            {% endif %}
+{% endfor %}
+ {% endif %}
+ </section>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shop</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type=text/css href="{% static "game/service_style.css" %}">
+</head>
+<body>
+{% include 'navbar_2.html' %}
+<b>Pieniądze: {{ wallet }} $</b>
+<p><b>Zniżka na części: {{ discount }} %</b></p>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h4 style="color: red" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+    {% endfor %}
+</ul>
+{% endif %}
+<center>
+<p><a href="/game/shop/motherboards">Płyty główne</a><b>Ilość w sklepie: {{ motherboards }}</b></p>
+<p><a href="/game/shop/processors">Procesory</a><b>Ilość w sklepie: {{ processors }}</b></p>
+<p><a href="/game/shop/graphics">Karty graficzne</a><b>Ilość w sklepie: {{ graphic_cards }}</b></p>
+<p><a href="/game/shop/discs">Dyski</a><b>Ilość w sklepie: {{ discs }}</b></p>
+<p><a href="/game/shop/memory">Pamięci RAM</a><b>Ilość w sklepie: {{ memories }}</b></p>
+<p><a href="/game/shop/power-supplies">Zasilacze</a><b>Ilość w sklepie: {{ power_supplies }}</b></p>
+<p><a href="/game/shop/cases">Obudowy</a><b>Ilość w sklepie: {{ cases }}</b></p>
+</center>
+</body>
+</html>

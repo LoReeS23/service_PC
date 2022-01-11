@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zasilacze</title>
+</head>
+<body>
+<section>
+    {% for power_supply in power_supplies %}
+        <article>
+        <h3>{{ power_supply.name }}</h3>
+        <input type="button" value="Kup zasilacz" onclick="location.href='/game/shop/power_buy/{{ power_supply.pk }}';">
+        </article>
+    {% endfor %}
+</section>
+</body>
+</html>

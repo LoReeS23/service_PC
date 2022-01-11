@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create PC</title>
+    {% load static %}
+    <link rel="stylesheet" type=text/css href="{% static "game/create_pc.css" %}">
+</head>
+<body>
+{% include 'navbar_2.html' %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h4 style="color: red" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+    {% endfor %}
+</ul>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="OK">
+</form>
+</body>
+</html>

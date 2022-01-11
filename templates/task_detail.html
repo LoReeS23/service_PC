@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type=text/css href="{% static "game/task_style.css" %}">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Szczegóły</title>
+</head>
+<body>
+{% include 'navbar_2.html' %}
+<b>Pieniądze: {{ wallet.money_amount }} $</b>
+<article>
+    <h2>Opis zadania: {{ task.description }}</h2>
+    <h2>Deadline: {{ task.deadline }}</h2>
+<form method="post">
+{% csrf_token %}
+    <input type="submit" name="check" id="check" value="Sprawdź czy wszystko jest poprawnie">
+    <input type="submit" name="fail" id="fail" value="Odrzuć zlecenie">
+    <input type="submit" name="give_back" id="give_back" value="Zakończ zlecenie">
+</form>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h4{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+    {% endfor %}
+</ul>
+{% endif %}
+    <h1>PC:</h1>
+    <h4>Płyta główna: {{ task.pc.motherboard.name }}</h4>
+        <input type="button" value="Wymień płytę główną" onclick="location.href='/game/tasks/change_motherboard/{{ task.id }}'">
+        <input type="button" value="Sprawdź szczegóły" onclick="location.href='/game/motherboard_details/{{ task.pc.motherboard.id }}'">
+    <h4>Procesor: {{ task.pc.processor.name }}</h4>
+        <input type="button" value="Wymień procesor" onclick="location.href='/game/tasks/change_processor/{{ task.id }}'">
+        <input type="button" value="Sprawdź szczegóły" onclick="location.href='/game/processor_details/{{ task.pc.processor.id }}'">
+    <h4>Dyski: </h4>
+    {% for disc in task.pc.disc.all %}
+        <li>{{ disc.name }}</li>
+            <input type="button" value="Wymień dysk" onclick="location.href='/game/tasks/change_disc/{{ task.id }}/{{ disc.id }}'">
+            <input type="button" value="Sprawdź szczegóły" onclick="location.href='/game/disc_details/{{ disc.id }}'">
+    {% endfor %}
+    <h4>Pamięci RAM: </h4>
+    {% for memory in task.pc.memory.all %}
+        <li>{{ memory.name }}</li>
+            <input type="button" value="Wymień pamięć RAM" onclick="location.href='/game/tasks/change_memory/{{ task.id }}/{{ memory.id }}'">
+            <input type="button" value="Sprawdź szczegóły" onclick="location.href='/game/memory_details/{{ memory.id }}'">
+    {% endfor %}
+    <h4>Karta graficzna: {{ task.pc.graphic_card.name }}</h4>
+        <input type="button" value="Wymień kartę graficzną" onclick="location.href='/game/tasks/change_graphic/{{ task.id }}'">
+        <input type="button" value="Sprawdź szczegóły" onclick="location.href='/game/graphic_card_details/{{ task.pc.graphic_card.id }}'">
+    <h4>Zasilacz: {{ task.pc.power_supply.name }}</h4>
+        <input type="button" value="Wymień zasilacz" onclick="location.href='/game/tasks/change_power_supply/{{ task.id }}'">
+        <input type="button" value="Sprawdź szczegóły" onclick="location.href='/game/power_supply_details/{{ task.pc.power_supply.id }}'">
+    <h4>Obudowa: {{ task.pc.case.name }}</h4>
+        <input type="button" value="Wymień obudowę" onclick="location.href='/game/tasks/change_case/{{ task.id }}'">
+        <input type="button" value="Sprawdź szczegóły" onclick="location.href='/game/case_details/{{ task.pc.case.id }}'">
+</article>
+</body>
+</html>

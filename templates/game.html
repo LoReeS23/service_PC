@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load  static %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'game/service_style.css' %}">
+    <title>Game Page</title>
+</head>
+<body>
+{% include 'navbar_2.html' %}
+<p><b>Pieniądze: {{ wallet }} $</b></p>
+<p><b>Dzień: {{ day.day }}</b></p>
+<p><b>Data: {{ day.date }}</b></p>
+<p><b>Poziom: {{ level.lvl }}</b></p>
+<p><b>Doświadczenie: {{ level.xp }} XP</b></p>
+<p><b>Znizka na zakup części: {{ discount }} %</b></p>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h4 style="color: red" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+    {% endfor %}
+</ul>
+{% endif %}
+<form method="post">
+{% csrf_token %}
+    <section id="submits">
+        <article style="text-align: center">
+            <p style="text-align: center; font-size: larger">Twój magazyn:</p>
+            <input type="button" name='storage' value="Magazyn" onclick="location.href='/game/storage/'">
+        </article>
+        <article style="text-align: center">
+            <p style="text-align: center; font-size: larger">Stwórz PC:</p>
+            <input type="button" name='create_pc' value="Stwórz PC" onclick="location.href='/game/create_pc/'">
+        </article>
+        <article style="text-align: center">
+            <p style="text-align: center; font-size: larger">Kup nową część w sklepie:</p>
+            <input type="button" name='shop' value="Kup nowe części" onclick="location.href='/game/shop/'">
+        </article>
+        <article style="text-align: center">
+            <p style="font-size: larger">Zobacz czy masz nowe przydzielone zadania:</p>
+            <input type="button" name='tasks' value="Zadania" onclick="location.href='/game/tasks/'">
+        </article>
+                <article style="text-align: center">
+            <p style="font-size: larger">Przejdź do następnego dnia:</p>
+            <input type="submit" name='next_day' value="Następny dzień">
+        </article>
+    </section>
+</form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" type=text/css href="{% static "game/task_style.css" %}">
+    <title>Document</title>
+</head>
+<body>
+{% include 'navbar_2.html' %}
+<b>Pieniądze: {{ wallet }} $</b>
+<p><b>Poziom: {{ level.lvl }} </b></p>
+<p><b>Doświadczenie: {{ level.xp }} XP</b></p>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h4 style="color: red" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+    {% endfor %}
+</ul>
+{% endif %}
+{% if tasks.count is 0 %}
+    <h1>Brak zadań. Dzień wolny!</h1>
+    {% else %}
+        {% for task in all_not_taken_tasks %}
+            <h1>Nowe zadanie! Nr identyfikacyjny: {{ task.id }}</h1>
+            <input type="button" name="show" value="Zobacz szczegóły" onclick="location.href='/game/tasks/confirm/{{ task.pk }}';">
+        {% endfor %}
+    <h1>Twoje zadania</h1>
+    {% for task in my_tasks %}
+        <h3>ID zadania: {{ task.id }}</h3>
+        <input type="button" name="details" value="Sprawdź szczegóły zadania" onclick="location.href='/game/tasks/detail/{{ task.pk }}';">
+    {% endfor %}
+{% endif %}
+
+</body>
+</html>

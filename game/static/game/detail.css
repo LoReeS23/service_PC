@@ -1,0 +1,80 @@
+h5 {
+    text-align: center;
+}
+h3 {
+    text-align: center;
+    padding-bottom: 50px;
+    font-size: 40px;
+}
+#logo {
+    height: 10%;
+    width: 100px;
+    text-align: left;
+}
+article {
+    border: 2px solid black;
+    margin: 15px;
+    background-color: #d1d1d1;
+    opacity: 80%;
+}
+section {
+    display: flex;
+    justify-content: center;
+}
+body {
+    height: 100%;
+    width: 100%;
+    background-image: url("wallpapers/detail.jpg");
+    background-size: cover;
+    backdrop-filter: blur(5px);
+}
+
+
+[name='back']{
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 1px solid black;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    text-align: left;
+    box-shadow: 2px 2px gray;
+    transition-duration: 0.4s;
+}
+[name='back']:hover{
+    background-color: white;
+}
+[name='change'] {
+    display: flex;
+    padding: 0.35em 1.2em;
+    border: 1px solid black;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    color: blueviolet;
+    text-align: left;
+    box-shadow: 2px 2px gray;
+}
+[name='sell'] {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 1px solid black;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    color: red;
+    text-align: left;
+    box-shadow: 2px 2px gray;
+    background-color: white;
+    transition-duration: 0.4s;
+}
+[name='sell']:hover {
+    background-color: lightcoral;
+}

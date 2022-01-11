@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" type=text/css href="{% static "game/shop.css" %}">
+    <title>Document</title>
+</head>
+<body>
+<input type="button" value="Wróć" onclick="history.back()">
+<article>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <h4{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+            {% endfor %}
+        </ul>
+    {% endif %}
+<h3>Nazwa: {{ power.name }}</h3>
+<h5>Moc: {{ power.power }} W</h5>
+<h5>Format zasilacza: {{ power.get_format_type_display }}</h5>
+<h5>Cena: {{ power.price }} $</h5>
+</article>
+<section>
+<form method="post">
+    {% csrf_token %}
+    <h3>W twoim portfelu po zakupie zostanie ci {{ money }} $</h3>
+    {% if discount != 0 %}
+        <h3>Wartość części po zniżce: {{ part_discount }} $</h3>
+    {% endif %}
+    <h3>Czy chcesz kupić tą część?</h3>
+    <input type="submit" value="Buy">
+</form>
+</section>
+</body>
+</html>

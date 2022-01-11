@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" type=text/css href="{% static "game/shop.css" %}">
+    <title>Document</title>
+</head>
+<body>
+<input type="button" value="Wróć" onclick="history.back()">
+<article>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <h4{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+            {% endfor %}
+        </ul>
+     {% endif %}
+    <h3>Nazwa: {{ graphic.name }}</h3>
+    <h5>Typ złącza: {{ graphic.get_slot_type_display }}</h5>
+    <h5>Pamięć: {{ graphic.memory }} GB</h5>
+    <h5>Częstotliwość w Mhz: {{ graphic.mhz }}</h5>
+    <h5>Liczba wentylatorów: {{ graphic.fans_number }}</h5>
+    <h5>Typ pamięci: {{ graphic.ram_memory_type }}</h5>
+    <h5>Cena: {{ graphic.price }} $</h5>
+</article>
+<section>
+<form method="post">
+    {% csrf_token %}
+    <h3>W twoim portfelu po zakupie zostanie ci {{ money }} $</h3>
+    <h3>Czy chcesz kupić tą część?</h3>
+    <input type="submit" value="Buy">
+</form>
+</section>
+</body>
+</html>

@@ -1,0 +1,72 @@
+form {
+    text-align: center;
+    padding-top: 20%;
+}
+body {
+    height: 100%;
+    width: 100%;
+    background-image: url("wallpapers/task.png");
+    background-size: cover;
+}
+
+a {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 1px solid black;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: black;
+    text-align: center;
+    box-shadow: 2px 2px gray;
+    background-color: white;
+}
+
+input[type='submit'] {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 1px solid black;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: black;
+    text-align: center;
+    box-shadow: 2px 2px gray;
+    transition-duration: 0.4s;
+    background-color: white;
+    font-size: 30px;
+}
+
+input[type='submit']:hover {
+    background-color: #3875d7;
+}
+input[type='button'] {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 1px solid black;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: black;
+    text-align: center;
+    box-shadow: 2px 2px gray;
+    transition-duration: 0.4s;
+    background-color: white;
+    font-size: 20px;
+}
+
+input[type='button']:hover {
+    background-color: #ddffdd;
+}
+select {
+    font-size: 30px;
+}

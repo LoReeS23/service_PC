@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'navbar_detail.html' %}
+
+</head>
+<body>
+ <input type="button" value="Magazyn" name="back" onclick="location.href='/game/storage/'">
+ <input type="button" value="Poprzednia strona" name="back" onclick="history.back()">
+ <article>
+<h3>Nazwa: {{ object.name }}</h3>
+<h5>Typ złącza: {{ object.get_slot_type_display }}</h5>
+<h5>Pamięć: {{ object.memory }} MB</h5>
+<h5>Częstotliwość w Mhz: {{ object.mhz }}</h5>
+<h5>Liczba wentylatorów: {{ object.fans_number }}</h5>
+<h5>Typ pamięci: {{ object.get_ram_memory_type_display }}</h5>
+ <h5>Cena: {{ object.price }} $</h5>
+ </article>
+ <section>
+ {% if tasks.count == 0 %}
+     {% if user.is_superuser %}
+         <input type="button" name="change" value="Change data of this part" onclick="location.href='/game/storage/updatepart/graphic_card/{{ object.pk }}';">
+     {% endif %}
+     <input type="button" value="Sell" name="sell" onclick="location.href='/game/storage/sellpart/graphic_card/{{ object.pk }}';">
+     {% else %}
+         {% for task in tasks %}
+            {% if task.pc.graphic_card.name != object.name %}
+                {% if user.is_superuser %}
+                    <input type="button" name="change" value="Change data of this part" onclick="location.href='/game/storage/updatepart/graphic_card/{{ object.pk }}';">
+                {% endif %}
+                <input type="button" value="Sell" name="sell" onclick="location.href='/game/storage/sellpart/graphic_card/{{ object.pk }}';">
+            {% endif %}
+{% endfor %}
+ {% endif %}
+ </section>
+</body>
+</html>

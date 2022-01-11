@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <title>Your storage</title>
+</head>
+<body>
+<link rel="stylesheet" type=text/css href="{% static "game/service_style.css" %}">
+{% include 'navbar_2.html' %}
+<b>Pieniądze: {{ wallet }} $</b>
+<p><b>Dzień: {{ day.day }}</b></p>
+<p><b>Data: {{ day.date }}</b></p>
+<p><b>Poziom: {{ level.lvl }}</b></p>
+<p><b>Doświadczenie: {{ level.xp }} XP</b></p>
+<p><b>Zniżka na części: {{ discount }} %</b></p>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <h4 style="color: red" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+    {% endfor %}
+</ul>
+{% endif %}
+<h1>Płyty główne</h1>
+<section>
+    {% for motherboard in motherboards %}
+        <article>
+            <h3>{{ motherboard.name }}</h3>
+            <input type="button" value="Check details" onclick="location.href='/game/motherboard_details/{{ motherboard.pk }}';">
+         </article>
+    {% endfor %}
+</section>
+<h1>Karty graficzne</h1>
+<section>
+    {% for graphic in graphic_cards %}
+        <article>
+            <h3>{{ graphic.name }}</h3>
+            <input type="button" value="Check details" onclick="location.href='/game/graphic_card_details/{{ graphic.pk }}';">
+        </article>
+    {% endfor %}
+</section>
+<h1>Procesory</h1>
+<section>
+    {% for processor in processors %}
+        <article>
+            <h3>{{ processor.name }}</h3>
+            <input type="button" value="Check details" onclick="location.href='/game/processor_details/{{ processor.pk }}';">
+        </article>
+    {% endfor %}
+</section>
+<h1>Dyski</h1>
+<section>
+    {% for disc in discs %}
+         <article>
+        <h3>{{ disc.name }}</h3>
+        <input type="button" value="Check details" onclick="location.href='/game/disc_details/{{ disc.pk }}';">
+          </article>
+    {% endfor %}
+</section>
+<h1>Pamięci RAM</h1>
+<section>
+    {% for memory in memories %}
+        <article>
+        <h3>{{ memory.name }}</h3>
+        <input type="button" value="Check details" onclick="location.href='/game/memory_details/{{ memory.pk }}';">
+        </article>
+    {% endfor %}
+</section>
+<h1>Zasilacze</h1>
+<section>
+    {% for power_supply in power_supplies %}
+        <article>
+        <h3>{{ power_supply.name }}</h3>
+        <input type="button" value="Check details" onclick="location.href='/game/power_supply_details/{{ power_supply.pk }}';">
+        </article>
+    {% endfor %}
+</section>
+<h1>Obudowy</h1>
+<section>
+    {% for case in cases %}
+        <article>
+        <h3>{{ case.name }}</h3>
+        <input type="button" value="Check details" onclick="location.href='/game/case_details/{{ case.pk }}';">
+         </article>
+    {% endfor %}
+</section>
+<h1>Stworzone PC</h1>
+<section>
+    {% for pc in pcs %}
+         <article>
+        <h3>PC nr.{{ pc.id }}</h3>
+        <input type="button" value="Check details" onclick="location.href='/game/pc_details/{{ pc.pk }}';">
+        </article>
+    {% endfor %}
+</section>
+</body>
+</html>

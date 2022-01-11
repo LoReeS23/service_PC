@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type=text/css href="{% static "game/shop.css" %}">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+ <input type="button" value="Wróć" onclick="history.back()">
+ <article>
+     {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <h4{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+            {% endfor %}
+        </ul>
+     {% endif %}
+    <h3>Nazwa: {{ motherboard.name }}</h3>
+    <h5>Rozmiar płyty: {{ motherboard.get_size_display }}</h5>
+    <h5>Socket: {{ motherboard.get_socket_display }}</h5>
+    <h5>Maksymalnie kości pamięci RAM: {{ motherboard.ram_slots }}</h5>
+    <h5>Typ pamięci RAM: {{ motherboard.memory_type }}</h5>
+    <h5>Najniższa obsługiwana częstotliwość pamięci: {{ motherboard.memory_frequency_lowest }}</h5>
+    <h5>Największa obsługiwana częstotliwość pamięci: {{ motherboard.memory_frequency_highest }}</h5>
+    <h5>Ilość maksymalnych dysków na płycie typu m.2: {{ motherboard.m2_disc_slots }}</h5>
+    <h5>Ilość maksymalnych dysków na płycie typu serial ata: {{ motherboard.sata_disc_slots }}</h5>
+    <h5>Ilość złącz USB: {{ motherboard.usb_amount }}</h5>
+    <h5>Ilość złączy PCI: {{ motherboard.PCI_slots }}</h5>
+    <h5>Ilość złączy PCI Express: {{ motherboard.PCI_express_slots }}</h5>
+    <h5>Czy posiada wbudowane oświetlenie RGB: {{ motherboard.has_RGB }}</h5>
+    <h5>Cena: {{ motherboard.price }} $</h5>
+ </article>
+ <section>
+    <form method="post">
+        {% csrf_token %}
+        <h3>W twoim portfelu po zakupie zostanie ci {{ money }} $</h3>
+        {% if discount != 0 %}
+            <h3>Wartość części po zniżce: {{ part_discount }} $</h3>
+        {% endif %}
+        <h3>Czy chcesz kupić tą część?</h3>
+        <input type="submit" value="Buy">
+    </form>
+ </section>
+</body>
+</html>

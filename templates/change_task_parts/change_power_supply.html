@@ -1,0 +1,14 @@
+{% load static %}
+<link rel="stylesheet" type=text/css href="{% static "game/change_part.css" %}">
+<input type="button" value="Poprzednia strona" name="back" onclick="history.back()">
+<form method="post">
+<label>
+    <select name="power_supplies">
+        {% for power_supply in power_supplies %}
+        <option value="{{ power_supply.name }}">{{ power_supply.name }}</option>
+        {% endfor %}
+    </select>
+</label>
+    {% csrf_token %}
+    <p><input type="submit" value="Zmien zasilacz"></p>
+</form>

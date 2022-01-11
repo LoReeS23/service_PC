@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type=text/css href="{% static "/game/delete.css" %}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <h1>Sprzedać?</h1>
+    <h3>Po sprzedaży wartość twojego portfela będzie wynosić: {{ wallet }} $</h3>
+    <input type="submit" value="Sell">
+</form>
+</body>
+</html>

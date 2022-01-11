@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include 'navbar_detail.html' %}
+</head>
+<body>
+  <input type="button" value="Magazyn" name="back" onclick="location.href='/game/storage/'">
+  <input type="button" value="Poprzednia strona" name="back" onclick="history.back()">
+ <article>
+<h3>Nazwa: {{ object.name }}</h3>
+<h5>Socket: {{ object.get_socket_display }}</h5>
+<h5>Liczba rdzeni: {{ object.cores }}</h5>
+<h5>Liczba wątków: {{ object.threads }}</h5>
+<h5>Zużycie prądu: {{ object.watts }} watów</h5>
+<h5>Częstotliwość w GHz: {{ object.ghz }}</h5>
+ <h5>Cena: {{ object.price }} $</h5>
+ </article>
+ <section>
+ {% if tasks.count == 0 %}
+     {% if user.is_superuser %}
+         <input type="button" name="change" value="Change data of this part" onclick="location.href='/game/storage/updatepart/processor/{{ object.pk }}';">
+     {% endif %}
+     <input type="button" value="Sell" name="sell" onclick="location.href='/game/storage/sellpart/processor/{{ object.pk }}';">
+     {% else %}
+         {% for task in tasks %}
+            {% if task.pc.processor.name != object.name %}
+                {% if user.is_superuser %}
+                    <input type="button" name="change" value="Change data of this part" onclick="location.href='/game/storage/updatepart/processor/{{ object.pk }}';">
+                {% endif %}
+                <input type="button" value="Sell" name="sell" onclick="location.href='/game/storage/sellpart/processor/{{ object.pk }}';">
+            {% endif %}
+{% endfor %}
+ {% endif %}
+ </section>
+</body>
+</html>

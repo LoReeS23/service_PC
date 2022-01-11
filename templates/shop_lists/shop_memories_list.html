@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="Wróć" onclick="history.back()"><br>
+<input type="button" data-bs-toggle="modal" value="Filtry wyszukiwania" data-bs-target="#popup">
+<div class="modal" id="popup" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Wyszukaj</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        modal body
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zamknij okno</button>
+        <button type="button" class="btn btn-primary">Zapisz zmiany</button>
+      </div>
+    </div>
+  </div>
+</div>
+<section>
+    {% for memory in memories %}
+        <article>
+        <h3>{{ memory.name }}</h3>
+        <input type="button" value="Kup RAM" onclick="location.href='/game/shop/memory_buy/{{ memory.pk }}';">
+        </article>
+    {% endfor %}
+</section>
+</body>
+</html>

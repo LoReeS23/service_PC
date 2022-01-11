@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" type=text/css href="{% static "game/task_style.css" %}">
+    <title>Document</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <h2>Opis: {{ task.description }}</h2>
+    <input type="submit" name="confirm" value="Akceptuj zadanie">
+    <input type="submit" name="reject" value="Odrzuć zadanie">
+</form>
+</body>
+</html>

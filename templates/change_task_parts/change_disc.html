@@ -1,0 +1,14 @@
+{% load static %}
+<link rel="stylesheet" type=text/css href="{% static "game/change_part.css" %}">
+<input type="button" value="Poprzednia strona" name="back" onclick="history.back()">
+<form method="post">
+<label>
+    <select name="discs">
+        {% for disc in discs %}
+        <option value="{{ disc.name }}">{{ disc.name }}</option>
+        {% endfor %}
+    </select>
+</label>
+    {% csrf_token %}
+    <p><input type="submit" value="Zmien dysk"></p>
+</form>
